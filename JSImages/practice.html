@@ -1,0 +1,85 @@
+<head>
+  <!-- 
+	Uncomment and copy links, 
+	don't remove them 
+-->
+
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous"> -->
+
+  <!-- D3 -->
+  <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+
+  <!-- JQuery -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+  <!-- React -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.10.2/umd/react.production.min.js"></script> -->
+
+  <!-- React-dom -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.10.2/umd/react-dom.production.min.js"></script> -->
+
+  <!-- Redux -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.4/redux.min.js"></script> -->
+  <!-- A JS library that helps manage our apps data-->
+
+  <!-- React-Redux -->
+  <!-- <script src=""https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.1.1/react-redux.min.js></script> -->
+  <!-- Links react and redux -->
+
+  <!-- Redux-Thunk -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.min.js"></script> -->
+  <!-- For redux to use middleware -->
+
+	<!-- ML5.js (Machine Learning 5) -->
+	<!-- <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script> -->
+
+
+	<head>
+  <body>
+
+	<img src="https://via.placeholder.com/150/92c952" alt="Sample Image">
+
+	<div id="root"><div>
+
+	<script>
+
+const root = document.getElementById("root");
+const p = document.createElement("p");
+const url = "http://jsonplaceholder.typicode.com/posts";
+
+function createNode(element) {
+	return document.createElement(element);
+}
+
+function append(parent, el) {
+	return parent.appendChild(el)
+}
+
+// One line in ReactJS data.map(ele => <li>{li}</li>)
+fetch(url)
+	.then(function(res) {
+		return res.json()
+	}).then(function(data) {
+		return data.map(function(ele){
+		let li = createNode('li')
+		let span = createNode('span')
+		span.innerHTML =  ele.title
+		append(li, span)
+		append(root, li)
+  })
+}).catch(err => console.error('Failed to fetch: ', err))
+
+	</script>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+</body>
