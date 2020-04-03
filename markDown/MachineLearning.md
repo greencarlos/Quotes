@@ -12,3 +12,45 @@ If you don't have Microsoft Excel on your computer you can download [provision.x
 [Google Sheets](https://docs.google.com/spreadsheets) If you have a google account or
 [iCloud Numbers](https://www.icloud.com/numbers/) or if you have an iCloud account.
 
+
+
+__Exercise 1:__ [Sentiment Analysis](https://songz.c0d3.com/js4/ml/sentiment.html)
+
+Hint: 
+
+Text Sentiment [Documentation](https://learn.ml5js.org/docs/#/reference/sentiment)
+
+To get [Emojis](https://emojipedia.org/pile-of-poo/) for the alert. (Put them inside of a string)
+
+Answer: 
+
+
+__CSS__
+
+1. Set the height and width of your textarea elements.
+
+__HTML__
+
+2. Create an `h5` for your title, `textarea` for your input text and a `button` to analyze text. Select them by their class.
+
+__JavaScript__
+
+3. Create a click event listener for your analyze button.
+
+- Grab the value of your textarea element.
+- Create a result variable that holds `sentiment.predict(inputElement)` on the textarea's value.
+- If the result's score is over 0.8 alert the thumbs up emoji
+- Otherwise alert the poo emoji.
+
+
+
+
+
+__Exercise 3:__
+[Object Detection](https://songz.c0d3.com/js4/exercises/videoDetect.html)
+
+Hint:
+
+YOLO [documentation](https://learn.ml5js.org/docs/#/reference/yolo)
+
+[Video Link](https://songz.c0d3.com/js4/exercises/cars.mp4)
