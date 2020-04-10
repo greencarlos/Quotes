@@ -23,7 +23,7 @@ Javascript Functions
 (https://www.notion.so/garagescript/JS-4-Front-End-Engineering-c59fbdd58dcc4214956f7856e0892b52)
 
 
-# CSS Articles/Extra Resources
+# Extra Resources
 -
 
 [A Complete Guide to Grid]
@@ -31,6 +31,8 @@ Javascript Functions
 
 [Grid by example]
 (https://gridbyexample.com/)
+
+[Vanilla JS and HTML](https://htmldom.dev/allow-to-enter-particular-characters-only)
 
 
 # HTML: Interactive Elements
@@ -42,13 +44,13 @@ Steps:
 
 __HTML__
 
-a. Create a `div` container. Select it by giving it a class. 
+1. Create a `div` container. Select it by giving it a class. 
 
 __JavaScript__
 
-b. Add a click event listener to the document that passes in an event.
+2. Add a click event listener to the document that passes in an event.
 
-- When click is hit it adds to the container’s innerHTML a string containing the event’s clientX and clientY.
+- When the page is clicked add to the container’s innerHTML a string containing the event’s clientX and clientY.
 
 ### 2. [Display mouse position only on hover](https://songz.c0d3.com/js4/examples/mouse.html)
 
@@ -56,45 +58,84 @@ Steps:
 
 __HTML__
 
-a. Create a `div` container that holds a `h1` tag which displays HELLO WORLD inside of the `h1`. Select them by giving them a class.
+1. Create a `div` container that holds a `h1` tag which displays HELLO WORLD inside of the `h1`. Select the container by giving it a class.
 
 __JavaScript__
 
-b. Add a mouse enter event listener to the container.
+2. Add a mouse move event listener to the container that passes in an event.
 
-- Set the innerText of the h1 tag to clientX and clientY.
+- Set the innerText of the container to a h1 tag with the event's clientX and clientY.
 
-c. Add a mouse move event listener to the container.
+3. Add a mouse leave event listener to the container.
 
-- Set the innerText of the h1 tag to clientX and clientY.
-d. Add a mouse leave event listener to the container.
-- Set the h1 tag to hello world.
+- Set the h1 tag to HELLO WORLD.
 
 ### 3. [Build a typewriter](https://songz.c0d3.com/js4/examples/typewriter.html)
 
-__HTML__
+**HTML**
 
-a. Create an `input` tag, and a container `div`. Select them by giving them a class.
+1. Create an `input`, typeDisplay `div` and display `div`. Select them.
 
-__JavaScript__
+**JavaScript**
 
-b. Add a keyup event listener to the input tag.
+2. Create a logs array to hold the input value.
 
-- Grab the value from the input tag.
-- Set the container’s innerText to the input tag value.
+3. Create a renderLogs function
+
+- set the innerHTML of the display to every element inside the logs array wrapped around h1 tags.
+
+4. Create a type event listener keyup that passes in an event.
+
+- If the event's key in enter
+- Grab the value of the input
+- unshift it into the logs array
+- call renderLogs function
+- set the typeInput's value to an empty string
+- set the innerText of the typeDisplay to typeInput's value. (Outside if statement)
+
 
 ### 4. [Build a text hiding tool](https://songz.c0d3.com/js4/examples/encode.html)
 
+
+Hint: HTMLElement.focus()
+
+Targets a specific HTML element for events by default.
+
 __HTML__
 
-a. Create an `input` tag and `div` container. Select them.
+1. Create an type `input`, type display `div` and display `div`.
 
 __JavaScript__
 
-b. Add a keyup event listener to the input tag that grabs the input tag’s value.
+2. Create a logs array.
+3. Create a getXStr function that takes in a number and returns a string containing that number X's.
 
-- Add a string of ‘X’ to the container’s innerText.
-- Or set it to an empty String.
+```
+getXStr(2) // returns 'XX'
+getXStr(5) // returns 'XXXXX'
+getXStr(7) // returns 'XXXXXXX'
+```
+
+4. Create a display all keys function that grabs every element with a message class.
+- iterate over that array and set the innerText if your h1 elements to the fakeText
+
+5. Add a typeInput event listener that checks keyup and passes in an event.
+- if the event's key is enter grab the input's value.
+- unshift fakeText (Math.random()) and realText (input value) as an object to the logs array.
+- set the innerHTML of the display with all of the elements in between opening and closing h1 tags with a message class.
+
+
+5. Grab all of the elements with a message class.
+- Iterate over that array and add mouse enter event listener's to the elements.
+- call displayAllKeys function
+- set the innerText of the logs index real text.
+- set the input.value to an empty string after iterating.
+- set the innerText of the type display div to getXStr with the input value's length.
+
+6. call typeInput focus.
+
+
+
 
 
 # Creating Elements
@@ -131,11 +172,17 @@ b. Add a click event listener to the add button.
 
 __HTML__
 
-a. Create an add `button`, names `div`, `hr` or horizontal line, `h1` tag and a registered `div`. Select them.
+1. Create an add person `button`, container `div`, `hr` or horizontal line, `h3` registered title and a registered container `div`. Select them.
 
 __JavaScript__
 
-b. Create a click event listener to the add button.
+2. Create a guestList array.
+
+3. Create an addToList function that passes in a new guest parameter.
+- push new guest into guest list array.
+- set the innerText to a string of every element inside the guestList array.
+
+4. Create a click event listener to the add button.
 
 - Create a div element
 - Set the innerHTML of the div to firstName input tag, lastName input tag and a register button. Select them.
@@ -150,22 +197,31 @@ b. Create a click event listener to the add button.
 
 __HTML__
 
-a. Create an `input`, `h1` tag and a `video` tag. Select them.
+1. Create an `input`, `h1` tag and a `video` tag. Select them.
 
 __JavaScript__
 
-b. Create a keyup event listener to the `input` tag.
+2. Create a isStarted variable and set it to false.
 
-- Grab the input value and assign it to the video’s source.
+3. Create a keyup event listener to the `input` tag that passes in an event.
+- If the event's key is Enter set the source of the audio.
+- play the audio and set the innerText of the h1 to 'Playing'.
+- set isStarted to true.
 
 
-c. Create a mouseenter event listener to the `h1` tag.
+4. Add a mouseenter event listener to the `h1` element.
+- If isStarted is false return.
+- Otherwise set the innerText of `h1` to 'Playing' and play the audio.
+
+5. Add a mouseleave event listener to the `h1` element.
+- If isStarted is false return.
+
+3. Create a mouseenter event listener to the `h1` tag.
 
 - Set the h1 tag innerText to playing.
 - Play the video.
 
-
-d. Create a mouse leave event listener to the `h1` tag.
+4. Create a mouse leave event listener to the `h1` tag.
 
 - Set the innerText to pause.
 - Pause the video.
@@ -175,129 +231,100 @@ d. Create a mouse leave event listener to the `h1` tag.
 
 __HTML__
 
-a. Create an `input` tag, `h1` tag and an `audio` tag. Select them.
+1. Create an `input` tag, `h1` tag and an `audio` tag. Select them.
 
 __JavaScript__
 
-b. Create a solution function that calls a setTimeout.
+2. call HTMLElement.focus() on the input element.
 
-- Set the innerHTML of the h1 tag to the correct minutes and seconds.
-- Call solution.
-- Set the timeout to 1,000.
+3. create a timeupdate event listener to the `audio` element that passes in an event.
 
+- use `Math.floor()` to create a seconds variable that is the audio element's current time.
+- use `Math.floor()` to create a min variable that is the seconds divided by 60.
+- set the seconds variable to modulo 60.
+- set the seconds variable to a template string of seconds.
+- if second's length is less than two, assign seconds to a template string of zero and seconds.
+- set the innerText of the h1 element to a template string of min and seconds.
 
-c. Create a keyup event listener to the input tag that passes in an event.
+4. Create an isStarted variable that is set to false.
 
-- If the event’s key is enter set the audio’s source to the input value.
+5. Add a keyup event listener to the `input` tag that passes in an event.
 
-d. Create a mouse enter event listener to the h1 tag that plays the audio and calls the solution.
+- if the event's key is enter set the audio's source to the input's value.
+- play the audio element.
+- set the inner text to four zeros.
+- set isStarted to true.
 
-e. Create a mouse leave event listener to the h1 tag that pauses the audio.
+6. Add a mouse enter event listener to the `h1` element.
+
+- if the isStarted variable is false return.
+- otherwise play the `audio` element.
+
+7. Add a mouse leave event listener to the `h1` element.
+
+- if the isStarted variable is false return.
+- otherwise pause the `audio` element.
+
 
 ### 3. [Build a hover-to-play video](https://songz.c0d3.com/js4/examples/video.html)
 
 __HTML__
 
-a. Create a `div` container, wrap it inside a start `button`. Select them. Create a `video` element and a `h1` tag. Select them.
+1. Create an app `div` and inside of that add a start app `button`. Select them.
 
 __JavaScript__
 
-b. Create a solution function that runs a setTimeout function.
+2. Create a get minutes and seconds function that passes in an element.
 
-- Set the innerText of the h1 tag to the correct minutes and seconds.
-- Call solution.
-- Set the timeout to 1000.
+- use `Math.floor()` to create a seconds variable that is the element's current time.
+- use `Math.floor()` to create a min variable that is the seconds divided by 60.
+- set the seconds variable to modulo 60.
+- set the seconds variable to a template string of seconds.
+- if second's length is less than two, assign seconds to a template string of zero and seconds.
+- return a template string of min and seconds.
 
+3. Create a start app function.
 
-c. Create a click event listener to the start button.
+- set the innerHTML of the app element to a string a `h1` element with a class of display and a video element. Select them.
 
-- Set the container’s innerHTML to an empty string.
-- Add a mouse enter event listener to the video that sets the src and calls solution.
-- Add a mouse enter event listener to the video and play the video.
-- Add a mouse leave event listener to the video that pauses it.
-- Append the timer and video to the container.
+4. create a timeupdate event listener for the video element.
+- set the innerText of the display element to your get minutes and seconds function with your video element from step 3.
+
+5. create a mouse enter event listener for the video element.
+- play the video element.
+
+6. create a mouse leave event listener for the video element.
+- pause the video element.
+
 
 ### 4. [Build a meme image generator](https://songz.c0d3.com/js4/examples/meme.html)
 
-__HTML__
-
-a. Create an `input`, `video` and `canvas` element. Select them all and get the `context` of canvas.
-
-__JavaScript__
-
-b. Get the webcam using `navigator.mediaDevices.getUserMedia()` function.
-
-c. Add a keyup event listener to the input tag that grabs the input’s value.
-
-- Use the context to draw an image with the video element.
-- Set the font of context, fill the style and fill the text.
 
 
 ### 5. [Exploding text](https://songz.c0d3.com/js4/examples/explode.html)
 
 __HTML__
 
-a. Create a `input` tag and a `canvas` tag, get the context of canvas. Select them.
+1. Create a `input` tag and a `canvas` tag, get the context of canvas. Select them and get the context of `canvas`.
 
 __JavaScript__
 
-b. Fill the style of context to yellow and fill the context rectangle.
+2. Focus on the HTML input element.
 
-c. Create a keyup event listener to the input tag. That grabs the input tag’s value and splits it into an array.
+3. Set the font of context and fill the style of context to yellow and fill the context with a rectangle.
 
-- Fill the rectangle of context, its font and style to black.
-- Iterate over the letters array, create a X and Y coordinate using Math.random().
-- Fill the text of context with the element, x and y coordinates.
+4. Create an explode function that passes in a string.
 
-#### Follow Up: Cycle through background colors
+- Fill the style of context to yellow and fill the context with a rectangle.
+- Split the string and iterate over that array.
+- fill the context with each character then call `Math.floor()` and `Math.random()` twice on the width and height.
 
-d. Initialize a counter variable to zero.
+5. Create a keyup event listener to the input tag. That grabs the input tag’s value and splits it into an array.
 
-e. Create an array of strings that contain different colors.
+- if the event's key is enter call the explode function on the input's value.
+- then clear the input value by setting it to an empty string.
 
-f. Check if the index is the length of the colors array - 1, if it is assign it to zero otherwise increment the index.
-
-g. Set the context to an array of the current index.
-
-
-
-# CSS
--
-
-CSS Specificity Hiearchy
-
-1. !Important
-2. Inline Style 
-3. Id
-4. Class, Attribute, Pseudo classes
-5. HTML elements
-
-
-```
-<style>
-#nice {
-  color: blue; 
-}
-
-.nice {
-  color: purple;
-}
-
-h1 {
-  color: orange;
-} 
-</style>
-
-<h1 id="nice" class="nice" style="color:red">Collions</h1>
-<h1 style="color:red">Inline Style</h1>
-<h1 id="nice">Id</h1>
-<h1 class="nice">Class, Pseudo</h1>
-<h1>HTML Elements</h1>
-```
-[Web Specifity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
-
-
-# External Libraries 
+# External JS Libraries 
 -
 
 ### 1. [Markdown to HTML](https://songz.c0d3.com/js4/examples/md.html)
@@ -336,6 +363,34 @@ b. Create a voicelist variable that gets voices from responsiveVoice.
 c. Add a keyup event listener to the input tag that grabs the value from the input tag.
 
 - Call the `responsiveVoice.speak()` Function on the input tag’s value.
+
+
+# CSS
+-
+
+```
+<style>
+#nice {
+  color: blue; 
+}
+
+.nice {
+  color: purple;
+}
+
+h1 {
+  color: orange;
+} 
+</style>
+
+<h1 id="nice" class="nice" style="color:red">Collions</h1>
+<h1 style="color:red">Inline Style</h1>
+<h1 id="nice">Id</h1>
+<h1 class="nice">Class, Pseudo</h1>
+<h1>HTML Elements</h1>
+```
+[Web Specifity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
+
 
 ### 1. [Create this todo list layout](https://songz.c0d3.com/js4/exercises/todo.html) - Without JavaScript
 
@@ -637,7 +692,7 @@ Hint:
 
 Import the [War CSS](https://songz.c0d3.com/js4/exercises/war.css) library the same way you would an external stylesheet and then select divs based on their class.
 
-Answer:
+Overview:
 
 __Version 1.0 Brute Force__
 
@@ -768,456 +823,9 @@ Hint:
 Combine the JavaScript from the JS3 todo list and some of the CSS from the earlier todo list. Otherwise start from scratch if you feel confident! 
 
 
-Answer:
+Overview:
 
 If you got stuck stop and think. Look at your previous solutions from the JS3 and CSS todo list exercises.
-
-
-
-
-
-# Custom Objects (New Section to be added)
--
-
-We can also use Constructor functions to create custom objects.
-
-```
-function Pokemon(name, legs, color) {
-  this.name = name
-  this.legs = legs
-  this.color = color
-  this.growl = function() {
-    console.log(`${this.name} growled!`)
-  }
-  this.sleep = function() {
-    console.log(`${this.name} fell asleep!`)
-  }
-}
-
-Pokemon.prototype.attack = function() {
-  console.log(`The ${this.color} ${this.name} attacked!`)
-}
-
-Pokemon.prototype.defend = function() {
-  console.log(`The ${this.color} ${this.name} defended!`)
-}
-
-const Pikachu = new Pokemon('Pikachu', 2, 'yellow')
-const Bulbasaur = new Pokemon('Bulbasaur', 4, 'green')
-const Charmander = new Pokemon('Charmander', 2, 'red')
-const Squirtle = new Pokemon('Squirtle', 2, 'blue')
-
-Pikachu.attack()
-// The yellow Pikachu attacked
-
-Charmander.defend()
-// The red Charmander defended
-
-Bulbasaur.growl()
-// Bublasaur growled!
-
-Squirtle.sleep()
-// Squirtle fell asleep! 
-```
-
-
-Debrief: What's the difference between the function `this.growl` and `Pokemon.prototype.attack`?
-
-- Let's say we created a more fully functional class, that included type, height, weight, pokemon number, abilities, attacks, whether it is shiny or not.
-- Can't forget the stats: HP, attack, defense, speed, special defense, special attack etc. etc.
-
-Rather than having a single class in a single file contain all of this functionality, we can break it down to different prototypes of that object.
-
-This way we can seperate it into multiple files which allows our codebase to become more readable.
-
-This process of breaking down Classes is called __Modular Programming__
-
-### Class or Constructor Prototypal Inheritance
-
-Let say that we wanted to create different Constructors for the type of our Pokemon.
-
-We would need to do 3 things:
-
-1. `call()` the parent functional constructor in your functional constructor
-2. Set your functional constructor's prototype property below the parent functional's constructor's prototype property in the prototype chain
-3. Set your functional constructor's constructor to your functional constructor
-
-```
-
-function Pokemon(name, legs, color) {
-  this.name = name
-  this.legs = legs
-  this.color = color
-  this.growl = function() {
-    console.log(`${this.name} growled!`)
-  }
-  this.sleep = function() {
-    console.log(`${this.name} fell asleep!`)
-  }
-}
-
-Pokemon.prototype.attack = function() {
-  console.log(`The ${this.color} ${this.name} attacked!`)
-}
-
-Pokemon.prototype.defend = function() {
-  console.log(`The ${this.color} ${this.name} defended!`)
-}
-
-// Step 1
-function ElectricType(name, legs, color) {
-  Pokemon.call(this, name, legs, color)
-  this.type = function() {
-    console.log(`${this.name} is an Electric type pokemon`)
-  }
-}
-
-// Step 2
-ElectricType.prototype = Object.create(Pokemon.prototype)
-
-// Step 3
-// using Object.defineProperty instead of Electric.prototype.constructor = Pokemon;
-// because I don't want the constructor property in ElectricType.prototype to be enumerable
-
-Object.defineProperty(ElectricType.prototype, 'constructor', {
-  value: ElectricType,
-  enumerable: false, // so that it does not appear in 'for in' loop
-  writable: true. // so we can add to the prototype
-})
-
-ElectricType.prototype.thunderBolt = function() {
-  console.log(`${this.name} used thunder bolt!`)
-}
-
-const Pikachu = new Pokemon('Pikachu', 2, 'yellow')
-const Raichu = new ElectricType('Raichu', 2, 'yellow and brown')
-
-Pikachu.attack()
-// The yellow Pikachu attacked
-
-Raichu.defend()
-// The yellow and brown Raichu defened
-
-Raichu.sleep()
-// Raichu fell asleep
-
-Raichu.thunderBolt()
-// Raichu used thunder bolt!
-
-```
-
-
-This allows us to keep not only the constructor function's methods but also allows us to use prototype methods on our new constructor.
-
-### ES6 Class
-
-ES6 Classes are just syntatic sugar but functionality do the same thing:
-
-
-```
-class Pokemon {
-  constructor (name, legs, color) {
-    this.name = name
-    this.legs = legs
-    this.color = color
-  }
-  growl = () => {
-    console.log(`${this.name} growled!`)
-  }
-  sleep() {
-    console.log(`${this.name} fell asleep!`)
-  }
-}
-
-class ElectricType extends Pokemon {
-  constructor(name, legs, color) {
-    super(name, legs, color)
-  }
-  type() {
-    console.log(`${this.name} is an Electric type pokemon`)
-  }
-}
-
-class FireType extends Pokemon {
-  constructor(name, legs, color) {
-    super(name, legs, color)
-  }
-  type() {
-    console.log(`${this.name} is a Fire type pokemon`)
-  }
-}
-
-Pokemon.prototype.attack = function() {
-  console.log(`The ${this.color} ${this.name} attacked!`)
-}
-
-Pokemon.prototype.defend = function() {
-  console.log(`The ${this.color} ${this.name} defended!`)
-}
-
-ElectricType.prototype.thunderbolt = function() {
-  console.log(`${this.name} used thunder bolt!`)
-}
-
-FireType.prototype.flamethrower = function() {
-  console.log(`${this.name} used flame thrower!`)
-}
-
-const Pikachu = new Pokemon('Pikachu', 2, 'yellow')
-const Raichu = new ElectricType('Raichu', 2, 'yellow and brown')
-const Charizard = new FireType('Charizard', 2, 'red')
-
-Pikachu.growl()
-// Pikachu growled!
-
-Pikachu.attack()
-// Pikachu attacked!
-
-Raichu.growl()
-// Raichu growled!
-
-Raichu.type()
-// Raichu is an electric type pokemon
-
-Raichu.thunderbolt()
-// Raichu used Thunder Bolt!
-
-Charizard.attack()
-// The red Charizard attacked!
-
-Charizard.type()
-// Charizard is a fire type pokemon
-
-Charizard.flamethrower()
-// Charizard used Flame Thrower!
-
-```
-
-Rather than using all of the previous code ES6 let's us:
-
-- Use `Extends` to add onto a previous class instead of our previous steps.
-
-- Calling `Super()` allows us to inherit data from our parent class.
-
-- For classes, we don't need to use `this` when creating a function. Everything is enclosed in that classes's scope.
-
-*** Image: Tree Data Structure on whiteBoard ***
-
-Note: There are more ways to create Constructors or Classes than shown. Try to experiment and see what ways you can come up with on your own.
-
-## Exercises
-
-These exercises aren't meant to trick you, they're meant to demonstrate classes and prototypes so it's less confusing when you see them again.
-
-1. Use the Pokemon constructor to create a new pokemon called Ditto
-
-
-Answer:
-
-Steps:
-
-a. Create a new variable called Ditto that is a new instance of Pokemon
-
-b. Pass in `new Pokemon('Ditto', 0, 'brown')`
-
-Code:
-
-
-```
-function Pokemon(name, legs, color) {
-  this.name = name
-  this.legs = legs
-  this.color = color
-  this.growl = function() {
-    console.log(`${this.name} growled!`)
-  }
-}
-
-const Ditto = new Pokemon('Ditto', 0, 'brown')
-```
-
-Part 2: Use ES6 class
-
-Code:
-
-```
-class Pokemon {
-  constructor (name, legs, color) {
-    this.name = name
-    this.legs = legs
-    this.color = color
-  }
-  growl() {
-    console.log(`${this.name} growled!`)
-  }
-  sleep = () => {
-    console.log(`${this.name} fell asleep!`)
-  }
-}
-
-const Ditto = new Pokemon('Ditto', 0, 'brown')
-```
-
-2. Create a Dog constructor and add a bark prototype
-Hint: It will be similar to the Pokemon constructor but will only pass in a name and legs.
-
-Answer:
-
-Steps:
-
-a. Create a function called Dog that passes in it's name and legs
-
-- Set this.name to name
-- Set this.legs to legs
-
-b. Add a bark prototype to the Dog constructor.
-
--  When the function runs print a bark to the console
-
-Code:
-
-```
-function Dog(name, legs) {
-  this.name = name
-  this.legs = legs
-}
-
-Dog.prototype.bark = function() {
-  console.log("Bark Bark!!!")
-}
-
-const Balto = new Dog('Balto', 4)
-
-```
-Part 2: Use ES6 class
-
-Code:
-
-```
-class Dog {
-  constructor(name, legs) {
-    this.name = name;
-    this.legs = legs;
-  }
-}
-
-Dog.prototype.bark = function() {
-  console.log("Bark Bark!!!")
-}
-
-const Balto = new Dog('Balto', 4);
-```
-
-3. Create a WaterType Pokemon Constructor. Use the WaterType constructor to create a `Surf` attack prototype. Then create a new WaterType called Blastoise.
-
-Hint: 
-
-Remember the 3 Steps!
-
-1. `call()` the parent functional constructor in your functional constructor
-2. Set your functional constructor's prototype property below the parent functional's constructor's prototype property in the prototype chain
-3. Set your functional constructor's constructor to your functional constructor
-
-Code:
-
-```
-function Pokemon(name, legs, color) {
-  this.name = name
-  this.legs = legs
-  this.color = color
-  this.growl = function() {
-    console.log(`${this.name} growled!`)
-  }
-  this.sleep = function() {
-    console.log(`${this.name} fell asleep!`)
-  }
-}
-
-// Step 1
-function WaterType(name, legs, color) {
-  Pokemon.call(this, name, legs, color)
-  this.type = function() {
-    console.log(`${this.name} is a Water type pokemon`)
-  }
-}
-
-// Step 2
-WaterType.prototype = Object.create(Pokemon.prototype)
-
-// Step 3
-Object.defineProperty(WaterType.prototype, 'constructor', {
-  value: WaterType,
-  enumerable: false, // so that it does not appear in 'for in' loop
-  writable: true,
-})
-
-WaterType.prototype.surf = function() {
-  console.log(`${this.name} used Surf!`)
-}
-
-const Blastoise = new WaterType('Blastoise', 2, 'Blue')
-
-Blastoise.type()
-// Blastoise is a water type pokemon
-
-Blastoise.surf()
-// Blastoise used surf!
-```
-
-
-Part 2: Use ES6 Class
-
-Code:
-
-```
-class Pokemon {
-  constructor (name, legs, color) {
-    this.name = name
-    this.legs = legs
-    this.color = color
-  }
-  growl = () => {
-    console.log(`${this.name} growled!`)
-  }
-  sleep() {
-    console.log(`${this.name} fell asleep!`)
-  }
-}
-
-class WaterType extends Pokemon {
-  constructor(name, legs, color) {
-    super(name, legs, color)
-  }
-  type() {
-    console.log(`${this.name} is a Water type pokemon`)
-  }
-}
-
-WaterType.prototype.surf = function() {
-  console.log(`${this.name} used Surf!`)
-}
-
-const Blastoise = new WaterType('Blastoise', 2, 'Blue')
-
-Blastoise.type()
-// Blastoise is a water type pokemon
-
-Blastoise.surf()
-// Blastoise used surf!
-```
-
-
-
-Further Reading:
-
--
-[Prototype Chain Explained](https://dev.to/lydiahallie/javascript-visualized-prototypal-inheritance-47co)
-
-[Inheritance in JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance)
-
-
-
-
 
 
 
@@ -1258,7 +866,7 @@ Text Sentiment [Documentation](https://learn.ml5js.org/docs/#/reference/sentimen
 
 To get [Emojis](https://emojipedia.org/pile-of-poo/) for the alert. (Put them inside of a string)
 
-Answer: 
+Overview: 
 
 
 __CSS__
@@ -1277,6 +885,15 @@ __JavaScript__
 - Create a result variable that holds `sentiment.predict(inputElement)` on the textarea's value.
 - If the result's score is over 0.8 alert the thumbs up emoji
 - Otherwise alert the poo emoji.
+
+__Exercise 2:__
+[Magic Oracle](https://songz.c0d3.com/js4/ml/oracle.html)
+
+Hint:
+
+CharRNN [documentation](https://learn.ml5js.org/docs/#/reference/charrnn)
+
+Overview:
 
 
 
