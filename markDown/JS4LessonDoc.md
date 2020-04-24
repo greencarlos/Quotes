@@ -512,11 +512,50 @@ A few other things you'll need to know:
 
 Play it for 5 seconds, pause it and then open the console while scrolling through different points in the video.
 
-Steps:
+Overview:
+**HTML**
 
-a. Create a videoContainer `div`, vPlayer `video`, videoCaption `div`,  inputContainer `div`, `h3` with Add Caption inside, captionInput `input`,  startInput `input`, endInput `input`, submit `button`, `hr` or horizontal line and a last `div` captionList. Select them by their classes. 
+1. Create two `div`s: one to contain the video, one to contain the caption editor. Create a save `button` and caption list `div`. Select them.
 
-b. 
+2.  In the video container `div` add:
+
+    - A `video` element and set its `src` to the video URL
+    - A `div` for the captions
+
+3. In the caption editor `div` add:
+
+    - A header with the text "Add Caption"
+    - Three `input:text` elements for the caption text, start time, and end time
+    - A `button` with text "Save"
+    - A `hr` element to provide a visual space between the caption "form" and the list of captions
+    - A `div` to contain the list of captions
+
+**CSS**
+
+4. The upper (video) container needs to be center aligned, it needs a background color and the width needs to take up the entire page. 
+
+5. Use display: flex so that caption, start and end stay on the same line but have even spacing.
+
+**JavaScript**
+
+
+6. Create a an array to store the captions
+    - Add some dummy captions (each caption is an object with text, start, and end properties).
+
+7. Create a `render` function that:
+  - Adds the captions to the caption list `div`.
+  - Adds click event listeners to each caption in the list that allow a caption to be deleted.
+
+8. Add a click event listener to the save `button` that:
+
+  - Adds a new caption to the `captions` array using the values from the text `input`s.
+  - Clears the values from the text `input`s.
+  - Calls `render`.
+
+9. Add a timeupdate event listener to the `video` element that:
+      - Gets the current video progress time from the `video` element.
+      - Finds the first caption in the `captions` array that is valid for the current video time.
+      - Sets the `textContent` of the video caption `div` to the text of the caption.
 
 Code:
 
@@ -556,7 +595,7 @@ Code:
 ```
 
 
-Debrief: Why couldn't we draw a canvas over the video?
+
 
 ### 2. [Mouse magnifier](https://songz.c0d3.com/js4/exercises/magnify.html)
 
@@ -570,32 +609,21 @@ Steps:
 
 __HTML__
 
-a. Create a small `image`, container`div`, `img` for the mouse, and a large `img` tag.
+1. Create a small `image`, container `div`, `img` for the mouse, and a large `img` tag.
 
 __CSS__
 
-b. Set the container's position, right, bottom. The large image should have a negative z-index and the mouse should have a positive z-index and position property.
+2. Set the large's image position, right, bottom. The large image should have a negative z-index and the mouse should have a positive z-index and position property.
 
 __JavaScript__
 
-c. Select the small image and mouse and then add a mousemove event listener that passes in an event parameter to the callback function. 
+3. Select the small image and mouse and then add a mousemove event listener that passes in an event parameter to the callback function. 
 
 - Grab the event's clientX and multiply it by (800/30)
 - Grab the event's clientY and multiply it by (800/30)
 - Set the top of the mouse to the yCoordinate.
 - Set the left of the mouse to the xCoordinate.
 - Set the innerText of the circle `div` to your number variable then append your circle `div` to your screen.
-
-d. Inside your class create a circle `div` click event listener that passes in an event.
-
-- Check whether your number variable has reached 0 because if it has then you remove it from the DOM.
-- Otherwise call event stop propagation.
-- Set the innerText of your circle `div` to your variable number.
-- Decrement num.
-
-e. Add a click event listener to the screen that passes in an event.
-
-- Create a new Circle and pass in the event's X and Y as parameters.
  
 
 
